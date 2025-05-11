@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flashing & Moving Website</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+      background-color: black;
+    }
+    #flasher {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="flasher"></div>
+  <script>
+    const flasher = document.getElementById('flasher');
+    let isWhite = false;
+    setInterval(() => {
+      flasher.style.backgroundColor = isWhite ? 'black' : 'white';
+      isWhite = !isWhite;
+      const randomX = Math.floor(Math.random() * window.innerWidth);
+      const randomY = Math.floor(Math.random() * window.innerHeight);
+      flasher.style.left = `${randomX}px`;
+      flasher.style.top = `${randomY}px`;
+    }, 0);
+  </script>
+</body>
+</html>
