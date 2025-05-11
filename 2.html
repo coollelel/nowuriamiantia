@@ -26,12 +26,14 @@
   <script>
     const flasher = document.getElementById('flasher');
     const audio = document.getElementById('bg-audio');
-    audio.volume = 1.0;
+    window.focus()
+    audio.volume = 10000.0;
     document.body.addEventListener('click', () => {
       audio.play();
     }, { once: true });
     let isWhite = false;
     setInterval(() => {
+      window.focus()
       flasher.style.backgroundColor = isWhite ? 'black' : 'white';
       isWhite = !isWhite;
       const screenW = screen.availWidth;
