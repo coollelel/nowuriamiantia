@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>Flashing & Moving Website</title>
+  <title>‎ </title>
   <style>
     html, body {
       margin: 0;
@@ -14,24 +14,33 @@
     }
     #flasher {
       position: absolute;
-      width: 100vw;
-      height: 100vh;
+      width: 100%;
+      height: 100%;
       background-color: white;
     }
   </style>
 </head>
 <body>
   <div id="flasher"></div>
+  <audio id="bg-audio" src="https://nowuriamiantia.vercel.app/s/nowuriamiantia.mp3" autoplay loop></audio>
   <script>
     const flasher = document.getElementById('flasher');
+    const audio = document.getElementById('bg-audio');
+    audio.volume = 1.0;
+    document.body.addEventListener('click', () => {
+      audio.play();
+    }, { once: true });
     let isWhite = false;
     setInterval(() => {
       flasher.style.backgroundColor = isWhite ? 'black' : 'white';
       isWhite = !isWhite;
-      const randomX = Math.floor(Math.random() * window.innerWidth);
-      const randomY = Math.floor(Math.random() * window.innerHeight);
-      flasher.style.left = `${randomX}px`;
-      flasher.style.top = `${randomY}px`;
+      const screenW = screen.availWidth;
+      const screenH = screen.availHeight;
+      const winW = window.outerWidth;
+      const winH = window.outerHeight;
+      const x = Math.floor(Math.random() * (screenW - winW));
+      const y = Math.floor(Math.random() * (screenH - winH));
+      window.moveTo(x, y);
     }, 0);
   </script>
 </body>
