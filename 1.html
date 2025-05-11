@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>‎ </title>
+  <link rel="icon" href="https://nowuriamiantia.vercel.app/i/%E2%80%8Eb.png" type="image/png">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      height: 100%;
+      width: 100%;
+      background-color: black;
+    }
+    #flasher {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="flasher"></div>
+  <audio id="bg-audio" src="https://nowuriamiantia.vercel.app/s/nowuriamiantia.mp3" autoplay loop></audio>
+  <script>
+    const flasher = document.getElementById('flasher');
+    const audio = document.getElementById('bg-audio');
+    window.focus()
+    audio.volume = 1.0;
+    document.body.addEventListener('click', () => {
+      audio.play();
+    }, { once: true });
+    let isWhite = false;
+    let x = Math.random() * window.innerWidth;
+    let y = Math.random() * window.innerHeight;
+    let vx = 5;
+    let vy = 5;
+    setInterval(() => {
+      window.focus();
+      flasher.style.backgroundColor = isWhite ? 'black' : 'white';
+      isWhite = !isWhite;
+      x += vx;
+      y += vy;
+      if (x <= 0 || x + window.outerWidth >= window.innerWidth) {
+        vx = -vx;
+      }
+      if (y <= 0 || y + window.outerHeight >= window.innerHeight) {
+        vy = -vy;
+      }
+      window.moveTo(x, y);
+    }, 10);
+  </script>
+</body>
+</html>
